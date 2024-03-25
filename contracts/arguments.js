@@ -1,5 +1,5 @@
 module.exports = {
-    "XCounter": [],
+    "XLottery": [],
     "XCounterUC": [],
     // Add your contract types here, along with the list of custom constructor arguments
     // DO NOT ADD THE DISPATCHER OR UNIVERSAL CHANNEL HANDLER ADDRESSES HERE!!!

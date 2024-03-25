@@ -3,8 +3,9 @@ const {getConfigPath, getWhitelistedNetworks} = require('./_helpers.js');
 const { setupIbcPacketEventListener } = require('./_events.js');
 
 const source = process.argv[2];
-if (!source) {
-  console.error('Usage: node send-packet-config.js <source_network>');
+const ticketNumber = process.argv[3];
+if (!source || !ticketNumber) {
+  console.error('Usage: just lottery-buy-ticket <FROM> <TICKET_NUMBER>');
   process.exit(1);
 }
 
@@ -30,8 +31,8 @@ async function runSendPacket(config) {
     process.exit(1);
   }
 
-  const script = config.isUniversal ? 'send-universal-packet.js' : 'send-packet.js';
-  const command = `npx hardhat run scripts/${script} --network ${source}`;
+  const script = 'choose-number.js';
+  const command = `ticketNumber=${ticketNumber} npx hardhat run scripts/${script} --network ${source}`;
 
   try {
     await setupIbcPacketEventListener();
